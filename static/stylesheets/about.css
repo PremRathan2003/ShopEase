@@ -1,0 +1,85 @@
+/* About Section */
+.about {
+    text-align: center;  /* Centers the content of the about section */
+    background-color: #f9f9f9;  /* Sets a light background color */
+    padding-top: 10px;  /* Adds space at the top of the section */
+}
+
+.about h1 {
+    font-size: 2.5rem;  /* Sets the font size for the main heading */
+    margin-bottom: 1.5rem;  /* Adds space below the heading */
+    color: #333;  /* Sets text color for the heading */
+}
+
+.about p {
+    font-size: 1rem;  /* Sets font size for the paragraph */
+    line-height: 1.6;  /* Increases line height for better readability */
+    color: #555;  /* Sets text color for the paragraph */
+    margin-bottom: 2rem;  /* Adds space below the paragraph */
+}
+
+/* About Content Layout */
+.about-content {
+    display: flex;  /* Uses flexbox for the layout of content */
+    flex-direction: column;  /* Aligns items in a column */
+    gap: 2rem;  /* Adds space between items */
+    padding: 1rem;  /* Adds padding inside the content section */
+}
+
+/* About Item - Section that displays image and text side by side */
+.about-item {
+    display: flex;  /* Uses flexbox to align the items inside */
+    flex-wrap: wrap;  /* Allows items to wrap to a new line if needed */
+    gap: 1rem;  /* Adds space between the image and the text */
+    background: #fff;  /* Sets the background color to white */
+    padding: 1.5rem;  /* Adds padding around the item */
+    border-radius: 10px;  /* Rounds the corners of the item */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Adds a subtle shadow for depth */
+    max-width: 800px;  /* Limits the width of the item */
+    margin: 0 auto;  /* Centers the item horizontally */
+}
+
+/* About Image */
+.about-image {
+    flex: 1;  /* Makes the image container take up a proportional amount of space */
+    min-width: 250px;  /* Sets a minimum width for the image */
+    max-width: 300px;  /* Sets a maximum width for the image */
+    overflow: hidden;  /* Hides any content that overflows the container */
+    border-radius: 10px;  /* Rounds the corners of the image container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Adds a shadow for depth */
+}
+
+.about-image img {
+    width: 100%;  /* Makes the image take up the full width of the container */
+    height: auto;  /* Maintains the aspect ratio of the image */
+    display: block;  /* Removes any space below the image */
+    object-fit: cover;  /* Ensures the image covers the container, maintaining aspect ratio */
+}
+
+/* About Text */
+.about-text {
+    flex: 2;  /* Makes the text container take up twice as much space as the image */
+    text-align: left;  /* Aligns the text to the left */
+    padding: 1rem;  /* Adds padding around the text */
+}
+
+.about-text h2 {
+    font-size: 1.8rem;  /* Sets the font size for the subheading */
+    margin-bottom: 1rem;  /* Adds space below the subheading */
+    color: #007BFF;  /* Sets the text color for the subheading */
+}
+
+.about-text p,
+.about-text ul {
+    font-size: 1rem;  /* Sets font size for paragraphs and lists */
+    line-height: 1.6;  /* Increases line height for readability */
+    color: #555;  /* Sets text color for paragraphs and list items */
+}
+
+.about-text ul {
+    padding-left: 1.5rem;  /* Adds padding to the left of the list for indentation */
+}
+
+.about-text ul li {
+    margin-bottom: 0.5rem;  /* Adds space between list items */
+}

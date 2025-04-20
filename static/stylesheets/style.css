@@ -1,0 +1,393 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;  /* Sets the font family for the body */
+    margin: 0;  /* Removes the default margin */
+    padding: 0;  /* Removes the default padding */
+    color: #333;  /* Sets the default text color */
+    line-height: 1.6;  /* Sets the line height for better readability */
+}
+
+.container {
+    width: 100%;  /* Container takes up the full width */
+    margin: 0 auto;  /* Centers the container horizontally */
+}
+
+/* Header */
+.header {
+    background-color: #ffffff;  /* Sets a white background for the header */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Adds a subtle shadow for depth */
+    padding: 20px 20px;  /* Padding inside the header */
+    position: sticky;  /* Keeps the header fixed at the top of the screen */
+    top: 0;  /* Aligns the header to the top */
+    z-index: 1000;  /* Ensures the header stays on top of other elements */
+}
+
+.header-content {
+    display: flex;  /* Uses flexbox to layout the header content */
+    justify-content: space-between;  /* Spaces out logo, navbar, and buttons */
+    align-items: center;  /* Vertically aligns the items */
+    max-width: 1200px;  /* Sets the max width of the header content */
+    margin: 0 auto;  /* Centers the header content horizontally */
+}
+
+.logo {
+    display: flex;  /* Uses flexbox to align the logo elements */
+    align-items: center;  /* Centers the logo vertically */
+    text-decoration: none;  /* Removes underline from links */
+    font-weight: bold;  /* Makes the font bold */
+    font-size: 1.5rem;  /* Sets the font size for the logo */
+    color: #333333;  /* Sets the logo text color */
+}
+
+.logo img {
+    height: 40px;  /* Sets the logo image height */
+    margin-right: 10px;  /* Adds space between logo text and image */
+}
+
+.navbar {
+    flex-grow: 1;  /* Allows navbar to expand to fill available space */
+    display: flex;  /* Uses flexbox for navbar layout */
+    justify-content: center;  /* Centers the navbar items */
+}
+
+.nav-links {
+    display: flex;  /* Uses flexbox to layout the navigation links */
+    list-style: none;  /* Removes default list styling */
+    gap: 20px;  /* Adds space between links */
+    margin: 0;  /* Removes default margin */
+    padding: 0;  /* Removes default padding */
+}
+
+.nav-links li a {
+    text-decoration: none;  /* Removes underline from links */
+    color: #333333;  /* Sets the link text color */
+    font-weight: 500;  /* Makes the font weight medium */
+    font-size: 1.1rem;  /* Sets the font size for the links */
+    transition: color 0.3s ease;  /* Adds smooth transition effect for color change */
+}
+
+.nav-links li a:hover {
+    color: #007BFF;  /* Changes link color on hover */
+}
+
+.header-buttons {
+    display: flex;  /* Uses flexbox for button layout */
+    align-items: center;  /* Vertically aligns the buttons */
+}
+
+.login-btn {
+    background-color: #007BFF;  /* Sets background color for the button */
+    color: #ffffff;  /* Sets text color for the button */
+    text-decoration: none;  /* Removes underline from button link */
+    font-size: 1rem;  /* Sets font size */
+    padding: 10px 20px;  /* Adds padding around the button */
+    border-radius: 25px;  /* Rounds the corners of the button */
+    cursor: pointer;  /* Changes cursor to pointer on hover */
+    transition: background-color 0.3s ease;  /* Adds smooth background color transition */
+}
+
+.login-btn:hover {
+    background-color: #0056b3;  /* Changes background color on hover */
+}
+
+/* Hero Section */
+.hero {
+    display: flex;  /* Uses flexbox for hero section layout */
+    align-items: center;  /* Vertically centers the content */
+    justify-content: space-between;  /* Spaces out the content on either side */
+    padding: 60px 20px;  /* Adds padding around the hero section */
+    background: linear-gradient(135deg, #007BFF, #6C63FF);  /* Sets a gradient background */
+    color: #fff;  /* Sets text color to white */
+    border-radius: 0 0 50px 50px;  /* Rounds the bottom corners */
+}
+
+.hero-content {
+    max-width: 50%;  /* Limits the width of the content */
+}
+
+.hero h1 {
+    font-size: 3rem;  /* Sets font size for the main heading */
+    margin-bottom: 20px;  /* Adds space below the heading */
+}
+
+.hero p {
+    font-size: 1.2rem;  /* Sets font size for the paragraph */
+    margin-bottom: 30px;  /* Adds space below the paragraph */
+}
+
+.hero .btn-secondary {
+    background: #fff;  /* Sets background color for the secondary button */
+    color: #007BFF;  /* Sets text color for the button */
+    padding: 10px 20px;  /* Adds padding around the button */
+    text-decoration: none;  /* Removes underline from link */
+    border-radius: 25px;  /* Rounds the corners */
+    font-weight: bold;  /* Makes the font bold */
+    transition: background 0.3s, color 0.3s;  /* Adds smooth transition for background and text color */
+}
+
+.hero .btn-secondary:hover {
+    background: #0056b3;  /* Changes background color on hover */
+    color: #fff;  /* Changes text color on hover */
+}
+
+.hero-image img {
+    width: 100%;  /* Makes the image take up full width */
+    max-width: 500px;  /* Limits the image width */
+    border-radius: 25px;  /* Rounds the corners of the image */
+}
+
+/* Features Section */
+.features {
+    text-align: center;  /* Centers the content */
+    padding: 80px 20px;  /* Adds padding around the features section */
+    background: linear-gradient(135deg, #ffffff, #f4f4f9);  /* Sets a gradient background */
+    border-radius: 50px 50px 0 0;  /* Rounds the top corners */
+}
+
+.features h2 {
+    font-size: 2.8rem;  /* Sets font size for the section heading */
+    margin-bottom: 40px;  /* Adds space below the heading */
+    color: #333;  /* Sets text color */
+    font-weight: 700;  /* Makes the font weight bold */
+}
+
+.feature-grid {
+    display: grid;  /* Uses grid layout for feature cards */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));  /* Automatically adjusts columns based on screen size */
+    gap: 30px;  /* Adds space between the feature cards */
+    padding: 20px;  /* Adds padding around the grid */
+    justify-content: center;  /* Centers the grid items */
+    align-items: stretch;  /* Stretches the items to match grid height */
+}
+
+.feature-card {
+    padding: 20px;  /* Adds padding inside the feature cards */
+    background: #ffffff;  /* Sets background color */
+    border-radius: 20px;  /* Rounds the corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);  /* Adds shadow for depth */
+    text-align: center;  /* Centers the content */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  /* Adds smooth transitions for hover effect */
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);  /* Moves the card up on hover */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);  /* Increases the shadow on hover */
+}
+
+.feature-card img {
+    width: 90%;  /* Makes the image take up 90% of the card's width */
+    height: 220px;  /* Sets a fixed height for the image */
+    margin-bottom: 15px;  /* Adds space below the image */
+    border-radius: 15px;  /* Rounds the corners of the image */
+    object-fit: cover;  /* Ensures the image maintains aspect ratio and covers the area */
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;  /* Sets font size for the feature heading */
+    margin-bottom: 15px;  /* Adds space below the heading */
+    color: #333;  /* Sets text color */
+    font-weight: 600;  /* Makes the font weight semi-bold */
+}
+
+.feature-card p {
+    font-size: 1rem;  /* Sets font size for the paragraph */
+    color: #555;  /* Sets text color */
+    line-height: 1.6;  /* Increases line height for readability */
+    margin: 0;  /* Removes default margin */
+}
+
+/* Testimonials Section */
+.testimonials {
+    text-align: center;  /* Centers the content */
+    background: #f4f4f9;  /* Sets a light background */
+    padding-bottom: 10px;  /* Adds space below the section */
+    padding-top: 10px;  /* Adds space above the section */
+}
+
+.testimonials h2 {
+    font-size: 2.5rem;  /* Sets font size for the testimonial heading */
+    margin-bottom: 50px;  /* Adds space below the heading */
+    color: #333;  /* Sets text color */
+}
+
+.testimonial-slider {
+    display: grid;  /* Uses grid layout for testimonial items */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));  /* Automatically adjusts columns based on screen size */
+    gap: 30px;  /* Adds space between testimonial items */
+    justify-items: center;  /* Centers the items in the grid */
+    padding: 20px;  /* Adds padding around the grid */
+}
+
+.testimonial {
+    max-width: 350px;  /* Limits the width of the testimonial cards */
+    padding: 30px;  /* Adds padding inside the testimonial cards */
+    background: #ffffff;  /* Sets background color */
+    border-radius: 20px;  /* Rounds the corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);  /* Adds shadow for depth */
+    text-align: center;  /* Centers the content */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  /* Adds smooth transition effect for hover */
+}
+
+.testimonial:hover {
+    transform: translateY(-10px);  /* Moves the card up on hover */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);  /* Increases shadow on hover */
+}
+
+.testimonial img {
+    width: 80px;  /* Sets the image width */
+    height: 80px;  /* Sets the image height */
+    border-radius: 50%;  /* Makes the image circular */
+    margin-bottom: 15px;  /* Adds space below the image */
+}
+
+.testimonial p {
+    font-size: 1.1rem;  /* Sets font size for the testimonial text */
+    font-style: italic;  /* Italicizes the testimonial text */
+    margin-bottom: 20px;  /* Adds space below the text */
+    color: #555;  /* Sets text color */
+    line-height: 1.6;  /* Increases line height for readability */
+}
+
+.testimonial footer {
+    font-weight: bold;  /* Makes the footer text bold */
+    color: #333;  /* Sets text color */
+}
+
+.testimonial .name {
+    font-size: 1.1rem;  /* Sets font size for the name */
+    margin-bottom: 5px;  /* Adds space below the name */
+}
+
+/* Footer */
+.footer {
+    background: #333;  /* Sets dark background color */
+    color: #fff;  /* Sets text color to white */
+    text-align: center;  /* Centers the text */
+    padding: 5px 0;  /* Adds vertical padding */
+}
+
+
+/* General Styles */
+
+/* Header Styling */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+}
+
+/* Menu Button - Left of Logo */
+.menu-toggle-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 26px;
+    cursor: pointer;
+    color: #333;
+    margin-right: 15px;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
+}
+
+.menu-toggle-btn:hover {
+    color: #007BFF;
+}
+
+/* Dynamic Side Menu */
+.dynamic-menu {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 280px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    padding-top: 60px;
+    transition: left 0.4s ease-in-out;
+}
+
+/* Open State */
+.dynamic-menu.open {
+    left: 0;
+}
+
+
+/* Menu Items */
+.dynamic-menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.dynamic-menu ul li {
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dynamic-menu ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    transition: background 0.3s ease-in-out, padding-left 0.3s ease-in-out;
+}
+
+.dynamic-menu ul li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    padding-left: 15px;
+}
+
+/* Close Button */
+.close-menu-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.close-menu-btn:hover {
+    color: #ff5757;
+    transform: rotate(90deg);
+}
+
+/* Overlay Effect */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 999;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.menu-overlay.show {
+    display: block;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .dynamic-menu {
+        width: 240px;
+    }
+}
+
+.dynamic-menu i {
+    margin-right: 8px; /* Add space between icon and text */
+    margin-left: 8px;
+    font-size: 1.2em; /* Adjust icon size */
+    color: #007bff; /* Change icon color */
+}

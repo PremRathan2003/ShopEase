@@ -1,0 +1,367 @@
+{% extends "base.html" %} {% load static %} {% block title %} Messages
+{%endblock title %} {% block content %}
+
+<!-- Bootstrap 5 CSS -->
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+  rel="stylesheet"
+/>
+
+<style>
+  /* Container */
+
+  .view-messages {
+    max-width: 800px;
+    background: #ffffff;
+    padding: 30px;
+    margin: 50px auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+
+  body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f9;
+    color: #333;
+  }
+
+  /* Page Heading */
+  .view-messages h1 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #007bff;
+  }
+
+  /* Table Styling */
+  #messagesTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  /* Table Headers */
+  #messagesTable thead {
+    background: #007bff;
+    color: white;
+    font-weight: bold;
+  }
+
+  #messagesTable th,
+  #messagesTable td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+    font-size: 16px;
+  }
+
+  /* Alternating Row Colors */
+  #messagesTable tbody tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+
+  /* Delete Button */
+  #messagesTable button {
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .view-messages {
+      width: 90%;
+      padding: 20px;
+    }
+
+    #messagesTable th,
+    #messagesTable td {
+      font-size: 14px;
+      padding: 10px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    #messagesTable th,
+    #messagesTable td {
+      font-size: 12px;
+      padding: 8px;
+    }
+
+    #messagesTable button {
+      padding: 6px 10px;
+      font-size: 12px;
+    }
+  }
+</style>
+<!-- Bootstrap 5 JS (with Popper) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<div class="container-fluid view-messages">
+  <h1>Messages</h1>
+
+  {% if messages %}
+  <table id="messagesTable" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Message</th>
+        <th>Date</th>
+        <th colspan="4">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for message in messages %}
+      <tr>
+        <td>{{ message.name }}</td>
+        <td>{{ message.email |slice:":10" }}</td>
+        <td>{{ message.message|slice:":10" }}...</td>
+        <td>{{ message.sent_at |slice:":10"}}</td>
+        
+        <td>
+          <!-- View Button -->
+          <button
+            type="button"
+            class="btn btn-primary btn-sm"
+            data-bs-toggle="modal"
+            data-bs-target="#viewModal{{ message.id }}"
+          >
+            View
+          </button>
+        </td>
+        <td>
+          <span class="btn btn-sm btn-success disabled">
+            <i class="bi bi-check-circle"></i>
+          </span>
+          <!--{% if message.status == "1" %}
+                {% else %}
+                  <span class="btn btn-sm btn-warning disabled">Pending</span>
+                {% endif %}-->
+        </td>
+        <td>
+          <!-- View Button -->
+          <button
+            type="button"
+            class="btn btn-info btn-sm"
+            data-bs-toggle="modal"
+            data-bs-target="#UpdateMessageModal{{ message.id }}"
+          >
+            Update
+          </button>
+        </td>
+        <td>
+          <!-- Delete Button -->
+          <button
+            type="button"
+            class="btn btn-danger btn-sm"
+            data-bs-toggle="modal"
+            data-bs-target="#deleteModal{{ message.id }}"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+      <!-- Update Modal -->
+      <div
+        class="modal fade"
+        id="UpdateMessageModal{{ message.id }}"
+        tabindex="-1"
+        aria-labelledby="UpdateMessageModal{{ message.id }}"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+              <h5 class="modal-title" id="viewModalLabel{{ message.id }}">
+                Update Message
+              </h5>
+
+              <button
+                type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form
+                class="form form-responsive p-2 m-1"
+                method="POST"
+                action='{% url "update_message" message.id %}'
+              >
+                {% csrf_token %}
+                <label for="MessageBody">Message Body:</label>
+                <input
+                  class="form-control p-3 m-3"
+                  type="textarea"
+                  name="message"
+                  required
+                  value="{{message.message}}"
+                />
+                <button type="submit" class="btn btn-primary w-100">
+                  Update Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- View Modal -->
+      <div
+        class="modal fade"
+        id="viewModal{{ message.id }}"
+        tabindex="-1"
+        aria-labelledby="viewModalLabel{{ message.id }}"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+              <h5 class="modal-title" id="viewModalLabel{{ message.id }}">
+                Message from {{ message.name }}
+              </h5>
+              <button
+                type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <p><strong>Email:</strong> {{ message.email }}</p>
+              <p><strong>Date:</strong> {{ message.sent_at }}</p>
+              <p><strong>Message:</strong> {{ message.message }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Delete Modal -->
+      <div
+        class="modal fade"
+        id="deleteModal{{ message.id }}"
+        tabindex="-1"
+        aria-labelledby="deleteModalLabel{{ message.id }}"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+              <h5 class="modal-title" id="deleteModalLabel{{ message.id }}">
+                Confirm Delete
+              </h5>
+              <button
+                type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              Are you sure you want to delete this message from
+              <strong>{{ message.name }}</strong>?
+            </div>
+            <div class="modal-footer">
+              <form
+                method="POST"
+                action="{% url 'delete_message' message.id %}"
+              >
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Delete</button>
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Cancel
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p>No messages found.</p>
+  {% endif %}
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="updateModal"
+  tabindex="-1"
+  aria-labelledby="updateModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateModalLabel">Update Message</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form id="update-form" method="POST" action="">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="message-name" class="form-label">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="message-name"
+              name="name"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="message-description" class="form-label"
+              >Description</label
+            >
+            <textarea
+              class="form-control"
+              id="message-description"
+              name="description"
+            ></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="message-created" class="form-label">Created On</label>
+            <input
+              type="text"
+              class="form-control"
+              id="message-created"
+              name="created"
+              readonly
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

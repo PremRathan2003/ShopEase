@@ -1,0 +1,128 @@
+/* Products Section */
+.products {
+    text-align: center;  /* Centers the text in the products section */
+    padding: 2rem;  /* Adds padding around the content */
+    background-color: #f9f9f9;  /* Sets a light background color */
+}
+
+.products h1 {
+    font-size: 2.5rem;  /* Sets font size for the section heading */
+    margin-bottom: 2rem;  /* Adds space below the heading */
+    color: #333;  /* Sets color for the heading text */
+}
+
+/* Product Grid */
+.product-grid {
+    display: grid;  /* Uses grid layout for displaying product cards */
+    grid-template-columns: repeat(3, minmax(300px, 1fr));  /* Creates 3 columns with a minimum width of 300px */
+    gap: 2rem;  /* Adds space between the product cards */
+    justify-content: center;  /* Centers the grid items horizontally */
+    padding: 0 2rem;  /* Adds padding on the left and right of the grid */
+}
+
+/* Individual Product Card */
+.product-card {
+    background-color: #fff;  /* Sets the background color of the product card */
+    border-radius: 12px;  /* Rounds the corners of the product card */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);  /* Adds a subtle shadow to the card */
+    overflow: hidden;  /* Ensures content doesn't overflow the rounded corners */
+    text-align: center;  /* Centers the content inside the card */
+    padding: 1.5rem;  /* Adds padding inside the card */
+    cursor: pointer;  /* Changes cursor to a pointer when hovering */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  /* Adds transition for smooth hover effect */
+}
+
+.product-card:hover {
+    transform: translateY(-10px);  /* Moves the card up slightly on hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);  /* Increases the shadow depth on hover */
+}
+
+/* Product Image */
+.product-card img {
+    width: 100%;  /* Makes the image take up full width of the card */
+    height: 300px;  /* Sets a fixed height for the image */
+    object-fit: cover;  /* Ensures the image covers the area without distortion */
+    border-radius: 12px 12px 0 0;  /* Rounds the top corners of the image */
+    margin-bottom: 2px;  /* Adds space below the image */
+}
+
+/* Product Name */
+.product-card h2 {
+    font-size: 1.5rem;  /* Sets font size for the product name */
+    color: #333;  /* Sets text color */
+    margin-bottom: 5px;  /* Adds space below the product name */
+}
+
+/* Brand Information */
+.product-card .brand {
+    font-size: 0.9rem;  /* Sets font size for the brand */
+    color: #777;  /* Sets color for the brand text */
+    margin-bottom: 2px;  /* Adds space below the brand name */
+}
+
+/* Product Price */
+.product-card .price {
+    font-size: 1.2rem;  /* Sets font size for the product price */
+    color: #007BFF;  /* Sets color for the price */
+    font-weight: bold;  /* Makes the price text bold */
+    margin-bottom: 1rem;  /* Adds space below the price */
+}
+
+/* Product Rating */
+.rating {
+    display: flex;  /* Uses flexbox to align the rating stars */
+    align-items: center;  /* Vertically centers the stars */
+    justify-content: center;  /* Centers the stars horizontally */
+    margin-bottom: 1rem;  /* Adds space below the rating section */
+}
+
+.rating span {
+    font-size: 1rem;  /* Sets font size for the rating number */
+    margin-right: 0.3rem;  /* Adds space between the rating number and the stars */
+}
+
+/* Star Icon */
+.star {
+    color: #FFD700;  /* Sets color of the stars to gold */
+    font-size: 1.2rem;  /* Sets font size for the stars */
+}
+
+/* Add to Cart Button */
+.add-to-cart {
+    background-color: #007BFF;  /* Sets background color for the button */
+    color: #fff;  /* Sets the text color to white */
+    padding: 0.8rem 1.5rem;  /* Adds padding inside the button */
+    font-size: 1rem;  /* Sets font size for the button text */
+    border: none;  /* Removes the default border */
+    border-radius: 8px;  /* Rounds the corners of the button */
+    cursor: pointer;  /* Changes cursor to pointer on hover */
+    transition: background-color 0.3s ease;  /* Adds smooth transition for background color */
+}
+
+.add-to-cart:hover {
+    background-color: #0056b3;  /* Changes the background color of the button on hover */
+}
+/* Search Bar Styling */
+.search-bar {
+    position: relative;
+    width: 60%;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 12px 40px 12px 15px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+.search-bar input:focus {
+    border-color: #ff6600;
+    box-shadow: 0 0 8px rgba(255, 102, 0, 0.3);
+}
+

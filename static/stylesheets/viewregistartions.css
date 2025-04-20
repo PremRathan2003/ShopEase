@@ -1,0 +1,117 @@
+/* Centering View Users Section */
+.view-users {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centering horizontally */
+    justify-content: center;
+    width: 80%;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 2rem;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+/* Center the Table */
+#usersTable {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Table Styling */
+#usersTable table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Table Headers and Cells */
+#usersTable table th, 
+#usersTable table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+/* Table Header Styling */
+#usersTable table th {
+    background-color: #f8f8f8;
+    font-weight: bold;
+}
+
+/* View Users Button */
+.view-users .btn {
+    background: #28a745;
+    color: white;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s ease;
+    text-align: center;
+}
+
+.view-users .btn:hover {
+    background: #218838;
+    transform: translateY(-2px);
+}
+
+/* Delete Button Styling */
+#usersTable table td button {
+    background-color: #dc3545;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+#usersTable table td button:hover {
+    background-color: #c82333;
+    transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .view-users {
+        width: 90%;
+        padding: 1.5rem;
+    }
+
+    #usersTable table {
+        width: 100%;
+        overflow-x: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .view-users {
+        width: 95%;
+        padding: 1.2rem;
+    }
+
+    .view-users .btn {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+    }
+
+    #usersTable table th, 
+    #usersTable table td {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    #usersTable table td button {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+}

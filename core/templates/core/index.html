@@ -1,0 +1,71 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %}Home - ShopEase{% endblock title %}
+{% block content %}
+
+<!-- Hero Section (Main Banner) -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Explore. Shop. Enjoy.</h1>
+        <p>Discover the latest trends and elevate your shopping experience with us.</p>
+        
+    </div>
+    
+    <!-- Hero Image -->
+    <div class="hero-image">
+        <img src="{% static "./images/hero1.jpg" %}" alt="Hero Image">
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features">
+    <h2>Why Shop With Us?</h2>
+    <div class="feature-grid">
+        <!-- Feature 1 -->
+        <div class="feature-card">
+            <img src="{% static "./images/quality.jpg" %}" alt="Quality Products">
+            <h3>Top Quality</h3>
+            <p>We provide premium, handpicked products to meet your needs.</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card">
+            <img src="{% static "./images/delivery.jpg" %}" alt="Fast Delivery">
+            <h3>Fast Delivery</h3>
+            <p>Quick and reliable delivery at your convenience.</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card">
+            <img src="{% static "./images/support.jpg" %}" alt="24/7 Support">
+            <h3>24/7 Support</h3>
+            <p>Our team is always here to assist you anytime.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonial Section -->
+<section class="testimonials">
+    <h2>What Our Customers Say</h2>
+    <div class="testimonial-slider">
+        <!-- Testimonial 1 -->
+        <div class="testimonial">
+            <p>"ShopEase has completely changed the way I shop online. Amazing experience!"</p>
+            <footer>- Sarah M.</footer>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial">
+            <p>"Quick delivery, great customer service, and quality products. Love it!"</p>
+            <footer>- Mark D.</footer>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="testimonial">
+            <p>"ShopEase never disappoints! Highly recommend to all my friends."</p>
+            <footer>- Emily R.</footer>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

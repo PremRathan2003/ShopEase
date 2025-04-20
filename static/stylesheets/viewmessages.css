@@ -1,0 +1,95 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f9;
+    color: #333;
+}
+
+/* Container */
+.view-messages {
+    max-width: 800px;
+    background: #ffffff;
+    padding: 30px;
+    margin: 50px auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Page Heading */
+.view-messages h1 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #007BFF;
+}
+
+/* Table Styling */
+#messagesTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Table Headers */
+#messagesTable thead {
+    background: #007BFF;
+    color: white;
+    font-weight: bold;
+}
+
+#messagesTable th, #messagesTable td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+    font-size: 16px;
+}
+
+/* Alternating Row Colors */
+#messagesTable tbody tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+/* Delete Button */
+#messagesTable button {
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .view-messages {
+        width: 90%;
+        padding: 20px;
+    }
+
+    #messagesTable th, #messagesTable td {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    #messagesTable th, #messagesTable td {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    #messagesTable button {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+}

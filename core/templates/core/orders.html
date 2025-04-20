@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags for character encoding and responsive design -->
+    <meta charset="UTF-8">
+    <title>My Orders</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Bootstrap 5 CDN for styling and responsive layout -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons CDN for using icons like check-circle in buttons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<!-- Container to hold the content with padding -->
+<div class="container py-5">
+    <!-- Card component for displaying orders with shadow and border -->
+    <div class="card shadow border-warning">
+        <!-- Card Header with a warning background and text centered -->
+        <div class="card-header bg-warning text-dark text-center fs-4 fw-semibold">
+            <div class="justify-space-between">
+                <!-- Title of the page: All Orders -->
+                <div class="title">All Orders</div>
+                <!-- Breadcrumb navigation for easy page tracking -->
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'admin_index' %}">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Orders</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <!-- Card Body to display the table of orders -->
+        <div class="card-body bg-white">
+            <!-- Check if orders exist and display them in a table -->
+            {% if orders %}
+                <div class="table-responsive">
+                    <!-- Table to display orders in a formatted layout -->
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead class="table-warning">
+                            <tr>
+                                <!-- Table headers defining columns -->
+                                <th>#</th>
+                                <th>Item Name</th>
+                                <th>Item ID</th>
+                                <th>Unit Price (€)</th>
+                                <th>Quantity</th>
+                                <th>Total Price (€)</th>
+                                <th>Order Date</th>
+                                <th colspan="2">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Loop through all orders and display them in rows -->
+                            {% for order in orders %}
+                            <tr>
+                                <!-- Displaying order details in respective columns -->
+                                <td>ORDXT{{ order.id }}</td>
+                                <td>{{ order.item_name | slice:"4" }}</td> <!-- Slice filter used to display a portion of the item name -->
+                                <td>{{ order.item_id }}</td>
+                                <td>{{ order.unit_price }}</td>
+                                <td>{{ order.quantity }}</td>
+                                <td>{{ order.total_price }}</td>
+                                <td>{{ order.order_date|date:"M d, Y - H:i" }}</td> <!-- Displaying formatted order date -->
+                                <td>
+                                    <!-- View Button triggers modal to view detailed order -->
+                                    <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#viewOrderModal{{ order.id }}">
+                                        View
+                                    </button>
+                                </td>
+                                <td>
+                                    <!-- Conditional logic to display button based on order status -->
+                                    {% if order.status == 1 %}
+                                        <!-- If status is 1 (completed), show a disabled 'Completed' button -->
+                                        <span class="btn btn-sm btn-success disabled">
+                                            <i class="bi bi-check-circle"></i>
+                                        </span>  
+                                    {% else %}
+                                        <!-- If status is not 1, allow the user to update the order -->
+                                        <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#updateOrderModal{{ order.id }}">
+                                            Process
+                                        </button>
+                                    {% endif %}
+                                </td>
+                            </tr>
+
+                            <!-- Modal to view order details -->
+                            <div class="modal fade" id="viewOrderModal{{ order.id }}" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header bg-info text-white">
+                                      <h5 class="modal-title">Order Details</h5>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                      <p><strong>Item Name:</strong> {{ order.item_name }}</p>
+                                      <p><strong>Item ID:</strong> {{ order.item_id }}</p>
+                                      <p><strong>Unit Price:</strong> €{{ order.unit_price }}</p>
+                                      <p><strong>Quantity:</strong> {{ order.quantity }}</p>
+                                      <p><strong>Total Price:</strong> €{{ order.total_price }}</p>
+                                      <p><strong>Order Date:</strong> {{ order.order_date|date:"M d, Y - H:i" }}</p>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+
+                            <!-- Modal to update the order status (Complete Order) -->
+                            <div class="modal fade" id="updateOrderModal{{ order.id }}" tabindex="-1" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <form action="{% url 'complete_order' order.id %}" method="post">
+                                    {% csrf_token %}
+                                    <div class="modal-header bg-success text-white">
+                                      <h5 class="modal-title">Complete Order</h5>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                      <p>Complete the Order No: <strong>ORDXT00{{ order.id }}</strong>.</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="submit" class="btn btn-success">Completed</button>
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Modal to notify that the order can't be updated (already completed) -->
+                            <div class="modal fade" id="denyUpdateModal{{ order.id }}" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header bg-danger text-white">
+                                      <h5 class="modal-title">Update Not Allowed</h5>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                      <p>This order has already been processed and cannot be updated.</p>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <!-- Message displayed if no orders are present -->
+                <p class="text-center text-muted">No orders have been placed yet.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap 5 JS for functionality like modals and tooltips -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // JavaScript for dynamically calculating total price based on quantity change
+    document.addEventListener("DOMContentLoaded", function () {
+        const quantityInputs = document.querySelectorAll(".quantity-input");
+
+        // Add event listener to each quantity input field
+        quantityInputs.forEach(input => {
+            input.addEventListener("input", function () {
+                const quantity = parseInt(this.value);
+                const unitPrice = parseFloat(this.getAttribute("data-unit-price"));
+                const targetId = this.getAttribute("data-target");
+                const totalPriceField = document.getElementById(`total-price-${targetId}`);
+
+                // Calculate total price if valid quantity and unit price exist
+                if (!isNaN(quantity) && !isNaN(unitPrice)) {
+                    const total = quantity * unitPrice;
+                    totalPriceField.value = total.toFixed(2);
+                } else {
+                    totalPriceField.value = "0.00";
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

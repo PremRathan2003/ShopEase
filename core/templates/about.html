@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+    <!-- Page Title -->
+{% block titlle %}About Us - ShopEase{% endblock titlle %}
+    
+
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static "./stylesheets/about.css" %}">
+
+<!-- Main Content Section -->
+<main>
+    <section class="about">
+        <h1>About Us</h1>
+        <p>Welcome to <strong>ShopEase</strong>, your one-stop destination for quality products at unbeatable prices. Our mission is to make shopping <em>convenient, enjoyable, and accessible</em> for everyone.</p>
+
+        <!-- About Content Section -->
+        <div class="about-content">
+            
+            <!-- Our Story -->
+            <div class="about-item">
+                <div class="about-image">
+                    <img src="{% static "./images/our-story.jpg" %}" alt="ShopEase's Journey and Growth">
+                </div>
+                <div class="about-text">
+                    <h2>Our Story</h2>
+                    <p>Founded in <strong>2025</strong>, ShopEase began with a simple vision: to bridge the gap between <strong>premium quality</strong> and <strong>affordability</strong>. We believe that everyone deserves access to the best products without breaking the bank.</p>
+                </div>
+            </div>
+
+            <!-- Our Values -->
+            <div class="about-item">
+                <div class="about-image">
+                    <img src="{% static "./images/our-values.jpg" %}" alt="ShopEase Core Values">
+                </div>
+                <div class="about-text">
+                    <h2>Our Values</h2>
+                    <ul>
+                        <li><strong>Customer First:</strong> Your satisfaction is our top priority.</li>
+                        <li><strong>Quality Guaranteed:</strong> We partner with trusted brands to bring you the best.</li>
+                        <li><strong>Innovation:</strong> Continuously improving to serve you better.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Why Choose Us -->
+            <div class="about-item">
+                <div class="about-image">
+                    <img src="{% static "./images/why-choose-us.jpg" %}" alt="Why ShopEase is the Best Choice">
+                </div>
+                <div class="about-text">
+                    <h2>Why Choose Us?</h2>
+                    <p>With a dedicated team, <strong>fast delivery</strong>, and <strong>24/7 customer support</strong>, ShopEase is committed to making your shopping experience seamless and enjoyable.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</main>
+
+{% endblock content %}
+    
+

@@ -1,0 +1,6 @@
+
+docker-compose run web python manage.py migrate
+
+docker build -t core-app .
+docker run -p 8000:8000 core-app
+http://localhost:8000

@@ -1,0 +1,144 @@
+/* Contact Section */
+.contact {
+    text-align: center;  /* Centers the text in the contact section */
+    background: linear-gradient(135deg, #f9f9f9, #eaf1ff);  /* Creates a soft gradient background */
+    padding-bottom: 30px;  /* Adds space at the bottom of the section */
+    padding-top: 10px;  /* Adds space at the top of the section */
+    padding-left: 20px;  /* Adds space on the left */
+    padding-right: 20px;  /* Adds space on the right */
+}
+
+.contact h1 {
+    font-size: 3rem;  /* Sets the font size for the contact section heading */
+    margin-bottom: 1.5rem;  /* Adds space below the heading */
+    color: #333;  /* Sets the text color */
+    font-weight: bold;  /* Makes the heading bold */
+}
+
+.contact p {
+    font-size: 1.1rem;  /* Sets font size for the paragraph text */
+    line-height: 1.8;  /* Increases line height for readability */
+    color: #555;  /* Sets text color for the paragraph */
+    margin-bottom: 3rem;  /* Adds space below the paragraph */
+}
+
+/* Contact Cards - Displays contact information in card style */
+.contact-content {
+    display: grid;  /* Uses grid layout for the contact items */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));  /* Automatically adjusts the number of columns */
+    gap: 2rem;  /* Adds space between the contact cards */
+    margin-bottom: 3rem;  /* Adds space at the bottom of the section */
+    text-align: center;  /* Centers the content inside each card */
+}
+
+.contact-item {
+    background: #ffffff;  /* Sets background color to white for each card */
+    padding: 2rem;  /* Adds padding inside the card */
+    border-radius: 15px;  /* Rounds the corners of the card */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);  /* Adds shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  /* Smooth transition on hover */
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);  /* Moves the card slightly upwards on hover */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);  /* Increases shadow depth on hover */
+}
+
+.contact-item h2 {
+    font-size: 1.6rem;  /* Sets font size for the subheading inside the card */
+    margin-top: 1rem;  /* Adds space at the top of the subheading */
+    margin-bottom: 0.5rem;  /* Adds space below the subheading */
+    color: #007BFF;  /* Sets color for the subheading */
+    font-weight: 600;  /* Makes the subheading bold */
+}
+
+.contact-item p {
+    font-size: 1.1rem;  /* Sets font size for the paragraph inside the card */
+    color: #555;  /* Sets text color */
+    margin: 0;  /* Removes any margin from the paragraph */
+    text-decoration: none;
+}
+
+.contact-icon {
+    width: 100px;  /* Sets width of the contact icon */
+    height: 100px;  /* Sets height of the contact icon */
+    margin-bottom: 1rem;  /* Adds space below the icon */
+}
+
+/* Contact Form */
+.contact-form {
+    background: #ffffff;  /* Sets background color to white */
+    padding: 2.5rem;  /* Adds padding inside the form */
+    border-radius: 15px;  /* Rounds the corners of the form */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);  /* Adds shadow for depth */
+    max-width: 600px;  /* Limits the form's maximum width */
+    margin: 0 auto;  /* Centers the form horizontally */
+    text-align: left;  /* Aligns form text to the left */
+}
+
+.contact-form h2 {
+    font-size: 2rem;  /* Sets font size for the form heading */
+    margin-bottom: 1.5rem;  /* Adds space below the heading */
+    color: #007BFF;  /* Sets text color for the form heading */
+    font-weight: bold;  /* Makes the heading bold */
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 1.5rem;  /* Adds space below each form group */
+}
+
+/* Form Label */
+.form-group label {
+    display: block;  /* Makes the label take up the full width */
+    font-size: 1.1rem;  /* Sets font size for the label */
+    font-weight: 500;  /* Makes the label slightly bold */
+    margin-bottom: 0.5rem;  /* Adds space below the label */
+    color: #333;  /* Sets text color for the label */
+}
+
+/* Form Inputs and Textarea */
+.form-group input,
+.form-group textarea {
+    width: 100%;  /* Makes the input and textarea take up full width */
+    padding: 1rem;  /* Adds padding inside the input fields */
+    border: 1px solid #ddd;  /* Adds a light border */
+    border-radius: 8px;  /* Rounds the corners of the input fields */
+    font-size: 1rem;  /* Sets font size for the input fields */
+    color: #333;  /* Sets text color */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;  /* Smooth transition on focus */
+}
+
+/* Focus Effect on Inputs and Textarea */
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;  /* Removes the default outline on focus */
+    border-color: #007BFF;  /* Changes border color on focus */
+    box-shadow: 0 0 6px rgba(0, 123, 255, 0.5);  /* Adds a glow effect on focus */
+}
+
+/* Textarea Specific Styles */
+textarea {
+    resize: none;  /* Prevents the textarea from being resized */
+}
+
+/* Submit Button */
+.btn {
+    display: inline-block;  /* Makes the button inline with the text */
+    background: linear-gradient(135deg, #007BFF, #0056b3);  /* Sets a gradient background */
+    color: #fff;  /* Sets text color to white */
+    padding: 0.8rem 2rem;  /* Adds padding inside the button */
+    font-size: 1rem;  /* Sets font size */
+    font-weight: 600;  /* Makes the text bold */
+    border: none;  /* Removes the border */
+    border-radius: 8px;  /* Rounds the corners of the button */
+    cursor: pointer;  /* Changes the cursor to a pointer when hovered */
+    transition: background 0.3s ease, transform 0.2s ease;  /* Adds a smooth transition on hover */
+    align-self: center;  /* Centers the button within the form */
+}
+
+/* Hover Effect for Submit Button */
+.btn:hover {
+    background: linear-gradient(135deg, #0056b3, #004099);  /* Changes the gradient on hover */
+    transform: translateY(-2px);  /* Slightly lifts the button on hover */
+}

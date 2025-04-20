@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url("/static/images/cartbg.jpg");
+        }
+
+        .card {
+            border-radius: 15px;
+        }
+
+        .card-header {
+            background-color: #f39c12;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .form-label {
+            font-weight: 500;
+        }
+
+        .form-control {
+            border-radius: 10px;
+        }
+
+        .btn-warning {
+            background-color: #f39c12;
+            border-color: #e67e22;
+            font-weight: bold;
+        }
+
+        .btn-warning:hover {
+            background-color: #e67e22;
+            border-color: #d35400;
+        }
+
+        .btn-back {
+            background-color: #3498db; 
+            color: #333;
+            border-radius: 5px;
+            padding: 10px 15px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .btn-back:hover {
+            background-color: #ccc;
+            text-decoration: none;
+        }
+
+        .card-footer {
+            font-size: 0.9rem;
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+
+                <!-- Back Button -->
+                <a href="{% url "products" %}" class="btn btn-back mb-3">&larr; Back to Shop</a>
+
+                <div class="card border-warning shadow">
+                    <div class="card-header text-center">
+                        Checkout
+                    </div>
+
+                    <div class="card-body bg-white">
+                        <form method="POST" action="">
+                            {% csrf_token %}
+
+                            <div class="mb-3">
+                                <label class="form-label">Item Name</label>
+                                <input type="text" name="item_name" value="{{ item_name }}" readonly class="form-control">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Item ID</label>
+                                <input type="text" name="item_id" value="{{ item_id }}" readonly class="form-control">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Unit Price (€)</label>
+                                <input type="text" name="unit_price" id="unit_price" value="{{ unit_price }}" readonly class="form-control">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Quantity</label>
+                                <input type="number" name="quantity" id="quantity" value="1" min="1" class="form-control border-warning" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Total Price (€)</label>
+                                <input type="text" name="total_price" id="total_price" value="{{ unit_price }}" readonly class="form-control-plaintext fw-bold text-success">
+                            </div>
+
+                            <button type="submit" class="btn btn-warning w-100">Place Order</button>
+                        </form>
+                    </div>
+
+                    <div class="card-footer text-center text-muted">
+                        Thank you for shopping with us!
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get references to the HTML elements for quantity, unit price, and total price
+        const quantityInput = document.getElementById('quantity');
+        const unitPriceInput = document.getElementById('unit_price');
+        const totalPriceInput = document.getElementById('total_price');
+    
+        // Function to update the total price
+        function updateTotal() {
+            // Get the quantity and unit price from the input fields
+            const quantity = parseInt(quantityInput.value);
+            const unitPrice = parseFloat(unitPriceInput.value);
+            
+            // Check if both quantity and unit price are valid numbers
+            if (!isNaN(quantity) && !isNaN(unitPrice)) {
+                // Calculate the total price and update the total price input field
+                totalPriceInput.value = (quantity * unitPrice).toFixed(2);  // Round to two decimal places
+            }
+        }
+    
+        // Add an event listener to the quantity input to call updateTotal when the quantity changes
+        quantityInput.addEventListener('input', updateTotal);
+    
+        // Optionally, you can also add an event listener to the unit price input if you want to update
+        // the total when the unit price is changed.
+        unitPriceInput.addEventListener('input', updateTotal);
+    </script>
+
+</body>
+
+</html>

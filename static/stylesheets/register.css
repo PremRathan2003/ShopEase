@@ -1,0 +1,192 @@
+/* Registration Form Styling */
+.registration-container {
+    max-width: 50vw;
+    background: #ffffff;
+    padding: 40px;
+    margin: 60px auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Form Heading */
+.registration h1 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 25px;
+}
+
+/* Label Styling */
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #444;
+    font-size: 17px;
+}
+
+/* Input & Select Styling */
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+    color: #333;
+    box-sizing: border-box;
+}
+
+/* Focus Effect */
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #007BFF;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+    background: #fff;
+}
+
+/* Password Input Eye Icon */
+.form-group input[type="password"] {
+    padding-right: 40px;
+}
+
+/* Submit Button Styling */
+.form-group input[type="submit"] {
+    background: linear-gradient(135deg, #007BFF, #0056b3);
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Submit Button Hover Effect */
+.form-group input[type="submit"]:hover {
+    background: linear-gradient(135deg, #0056b3, #004099);
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .registration-container {
+        width: 85%;
+        padding: 30px;
+    }
+
+    .registration h1 {
+        font-size: 26px;
+    }
+
+    .form-group input,
+    .form-group select {
+        padding: 12px;
+        font-size: 15px;
+    }
+
+    .form-group input[type="submit"] {
+        font-size: 17px;
+        padding: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .registration-container {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .registration h1 {
+        font-size: 22px;
+    }
+
+    .form-group input,
+    .form-group select {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .form-group input[type="submit"] {
+        font-size: 16px;
+        padding: 13px;
+    }
+}
+
+/* Smooth Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Accessibility Improvement: Input Focus Enhancement */
+.form-group input:focus,
+.form-group select:focus {
+    background: #e9f6ff;  /* Lighter background on focus */
+    border-color: #0056b3;  /* Slightly darker blue for better contrast */
+    box-shadow: 0 0 10px rgba(0, 86, 179, 0.5);  /* More prominent focus effect */
+}
+
+/* Minor Adjustments for Aesthetics */
+.form-group input, .form-group select {
+    border-radius: 12px;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Terms and Conditions Checkbox Styling */
+.terms {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+.terms input {
+    width: 18px;
+    height: 18px;
+}
+
+.terms a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.terms a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .terms {
+        font-size: 14px;
+    }
+
+    .terms input {
+        width: 16px;
+        height: 16px;
+    }
+}

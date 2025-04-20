@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Order Successful</title>
+    <meta http-equiv="refresh" content="5;url={% url 'index' %}" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 40px;
+        background-color: #f2f2f2;
+      }
+      .message-box {
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        display: inline-block;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #4caf50;
+      }
+      p {
+        font-size: 18px;
+      }
+      #countdown {
+        font-weight: bold;
+        color: #ff6600;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="message-box">
+      <h1>🎉 Order Successful!</h1>
+      <p>Thank you.</p>
+      <p>
+        Redirecting to the homepage in <span id="countdown">5</span> seconds...
+      </p>
+    </div>
+
+    <script>
+      let countdown = 5;
+      const countdownElement = document.getElementById("countdown");
+
+      setInterval(() => {
+        countdown--;
+        if (countdown > 0) {
+          countdownElement.innerText = countdown;
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>

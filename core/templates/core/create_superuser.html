@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Setting the character encoding and viewport for responsive design -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Superuser</title>
+
+    <!-- Linking the Bootstrap CSS file for styling and responsiveness -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Main container to hold the form with padding -->
+<div class="container py-5">
+    <!-- Centering the form within a row and column structure using Bootstrap's grid system -->
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <!-- Card element for form design with shadow effect for better aesthetics -->
+            <div class="card shadow-lg">
+                <!-- Card header with a primary background color and white text, centered -->
+                <div class="card-header bg-primary text-white text-center">
+                    <h4>Create Superuser</h4> <!-- Title of the form -->
+                </div>
+                <div class="card-body">
+                    <!-- Form starts here, method POST to securely send form data -->
+                    <form method="post">
+                        <!-- CSRF token for security to prevent Cross-Site Request Forgery attacks -->
+                        {% csrf_token %}
+
+                        <!-- Rendering form fields automatically in paragraph style -->
+                        {{ form.as_p }}
+
+                        <!-- Submit button for creating the superuser -->
+                        <button type="submit" class="btn btn-primary w-100">Create Superuser</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Linking Bootstrap's JavaScript library for interactive components like modals, tooltips, etc. -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // JavaScript to add form-control class to all input fields for consistent styling
+    document.addEventListener("DOMContentLoaded", function() {
+        // Selecting all input fields within the form
+        const formFields = document.querySelectorAll("input");
+
+        // Adding the 'form-control' class to each input field to apply Bootstrap's default styling
+        formFields.forEach(function(field) {
+            field.classList.add("form-control");
+        });
+    });
+</script>
+
+</body>
+</html>

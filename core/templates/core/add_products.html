@@ -1,0 +1,57 @@
+{% load static %}  <!-- Loads the static files to access assets like CSS, JS, and images -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Photo</title>
+    <!-- Linking the Bootstrap CSS file to make the page responsive and styled -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">  <!-- Setting the background color of the page to light gray -->
+
+<!-- Container to wrap the content and provide margin and padding for neat alignment -->
+<div class="container mt-5">
+    <h2 class="mb-4">Add Product</h2> <!-- Heading for the form -->
+    
+    <!-- Form for uploading product details. It uses POST method to send data and 'multipart/form-data' for handling file uploads -->
+    <form method="POST" enctype="multipart/form-data" class="card p-4 shadow-sm">
+        {% csrf_token %}  <!-- Django CSRF token for security to prevent Cross-Site Request Forgery attacks -->
+        
+        <!-- Display any non-field errors that might occur when submitting the form -->
+        {{ form.non_field_errors }}
+
+        <!-- Input for product name -->
+        <div class="mb-3">
+            <label for="id_name" class="form-label">Name</label> <!-- Label for product name input -->
+            {{ form.name }}  <!-- Rendering the product name input field -->
+            {{ form.name.errors }} <!-- Display any validation errors for the name field -->
+        </div>
+
+        <!-- Input for seller -->
+        <div class="mb-3">
+            <label for="id_seller" class="form-label">Seller</label> <!-- Label for seller input -->
+            {{ form.seller }}  <!-- Rendering the seller input field -->
+            {{ form.sller.errors }} <!-- Display any validation errors for the seller field (note: there seems to be a typo 'sller' instead of 'seller') -->
+        </div>
+
+        <!-- Input for unit price -->
+        <div class="mb-3">
+            <label for="id_unit_price" class="form-label">Unit Price</label> <!-- Label for unit price input -->
+            {{ form.unit_price }}  <!-- Rendering the unit price input field -->
+            {{ form.unit_price.errors }} <!-- Display any validation errors for the unit price field -->
+        </div>
+
+        <!-- Input for image selection -->
+        <div class="mb-3">
+            <label for="id_image" class="form-label">Select Image</label> <!-- Label for image upload -->
+            {{ form.image }}  <!-- Rendering the file input for image upload -->
+            {{ form.image.errors }} <!-- Display any validation errors for the image field -->
+        </div>
+
+        <!-- Submit button to upload the form data -->
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
+</div>
+
+</body>
+</html>
